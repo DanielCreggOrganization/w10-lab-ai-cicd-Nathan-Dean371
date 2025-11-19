@@ -100,7 +100,7 @@ Instead of writing YAML manually or copy-pasting, we will ask the AI Agent to cr
 
 3.  **Review the Plan:** The Agent will analyse your workspace and propose creating a new file path: `.github/workflows/python-app.yml`.
 
-4.  **Accept the Changes:** Click **Keep** or **Accept** (or the checkmark icon) to confirm. The AI will create the folder structure and the file instantly.
+4.  **Accept the Changes:** Click **Keep** (or the checkmark icon) to confirm. The AI will create the folder structure and the file instantly.
 
 ### Step 2: Commit and Run
 
