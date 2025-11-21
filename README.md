@@ -143,8 +143,8 @@ A CI pipeline is useless if you can't fix it when it breaks.
 
 ### Step 1: Break the Code
 
-1.  Open a test file (e.g., `hello_app/views.py` or create a new test file `tests/test_basic.py`).
-      * *If the repo has no tests, use Copilot Agent: "Create a simple failing test for a flask app named tests/test_fail.py"*
+1.  Open the test file (`tests/test_app.py`).
+      * *Use Copilot Agent: "Create a simple failing test for a flask app named tests/test_fail.py"*
 2.  Add a failing assertion:
     ```python
     def test_math_fail():
@@ -298,7 +298,7 @@ Now, let's see if Copilot can critique *our* code.
 ## 📝 Summary Checklist
 
   - [ ] Created a workflow using **Copilot Agent Mode**.
-  - [ ] Used `gh copilot` to write a shell script step.
+  - [ ] Used `Copilot` to write a shell script step.
   - [ ] Diagnosed a CI log error using Copilot Chat.
   - [ ] Assigned a GitHub Issue to `@copilot` and merged the resulting PR.
   - [ ] Received an automated Code Review from Copilot on a Pull Request.
