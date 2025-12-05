@@ -1,6 +1,6 @@
 # Entry point for the application.
-from . import app
-from . import views
+from . import app  # noqa: F401
+from . import views  # noqa: F401
 
 # Time-saver: output a URL to the VS Code terminal so you can easily
 # Ctrl+click to open a browser
