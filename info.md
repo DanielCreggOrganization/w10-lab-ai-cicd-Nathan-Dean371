@@ -23,7 +23,7 @@ To run this application, you need Python 3.12 or higher. The required Python pac
 1. **Clone the repository** (if not already cloned):
    ```bash
    git clone <repository-url>
-   cd w10-lab-ai-cicd-Nathan-Dean371
+   cd <repository-directory>
    ```
 
 2. **Install the required dependencies**:
