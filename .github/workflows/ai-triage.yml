@@ -1,33 +1,30 @@
-name: AI Triage
-
+name: AI Issue Triage
 on:
   issues:
     types: [opened]
 
-permissions:
-  issues: write
-
 jobs:
   triage:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Check Issue Context
+        run: echo "New issue opened: ${{ github.event.issue.title }}"
 
-      - name: Analyze issue with AI
-        id: ai
+      - name: AI Classification
         uses: actions/ai-inference@v1
+        id: classify
         with:
-          # Provide a concise instruction to the AI to return a single label
-          input: |
-            You are a classifier. Classify the following GitHub issue into exactly one
-            of these labels: Bug, Feature, Question.
-            Return only the single word label (Bug, Feature, or Question) and nothing else.
-            If unsure, choose Question.
-
-            Issue title: ${{ github.event.issue.title }}
-            Issue body: ${{ github.event.issue.body }}
-
-      - name: Print classification
-        run: |
-          echo "AI outputs: result='${{ steps.ai.outputs.result }}' output='${{ steps.ai.outputs.output }}'"
+          model: 'gpt-4o-mini' 
+          prompt: |
+            Analyse this issue:
+            Title: ${{ github.event.issue.title }}
+            Body: ${{ github.event.issue.body }}
+            
+            Is this a 'Bug', 'Feature', or 'Question'? Respond with only one word.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Print Classification
+        run: echo "The AI thinks this is a ${{ steps.classify.outputs.response }}"
