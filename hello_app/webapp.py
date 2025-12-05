@@ -1,6 +1,5 @@
 # Entry point for the application.
-from . import app
-from . import views
+
 
 # Time-saver: output a URL to the VS Code terminal so you can easily
 # Ctrl+click to open a browser
