@@ -1,0 +1,33 @@
+name: AI Triage
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Analyze issue with AI
+        id: ai
+        uses: actions/ai-inference@v1
+        with:
+          # Provide a concise instruction to the AI to return a single label
+          input: |
+            You are a classifier. Classify the following GitHub issue into exactly one
+            of these labels: Bug, Feature, Question.
+            Return only the single word label (Bug, Feature, or Question) and nothing else.
+            If unsure, choose Question.
+
+            Issue title: ${{ github.event.issue.title }}
+            Issue body: ${{ github.event.issue.body }}
+
+      - name: Print classification
+        run: |
+          echo "AI outputs: result='${{ steps.ai.outputs.result }}' output='${{ steps.ai.outputs.output }}'"
